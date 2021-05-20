@@ -22,7 +22,8 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->word,
+            'content' => $this->faker->realText
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Blog;
 
 class BlogsTableSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class BlogsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // Blog::factory(15)->create();
     }
 }
