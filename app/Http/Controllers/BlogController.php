@@ -11,6 +11,6 @@ class BlogController extends Controller
      */
     public function showList()
     {
-        return view('blog.List');
+        return view('blog.list');
     }
 }
