@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,6 +12,7 @@ class BlogController extends Controller
      */
     public function showList()
     {
-        return view('blog.list');
+        $blogs = Blog::all();
+        return view('blog.list', ['blogs' => $blogs]);
     }
 }
