@@ -18,9 +18,10 @@ class BlogController extends Controller
 
     /**
      * ブログ詳細を表示する
+     * @param Request $request
      * @param int $id
      */
-    public function showDetail($id, $request)
+    public function showDetail($id, Request $request)
     {
         $blog = Blog::find($id);
 
@@ -28,6 +29,6 @@ class BlogController extends Controller
             $request->session()->flash('err_msg', 'データがありません');
             return redirect(route('blogs'));
         }
-        return view('blog.detail', ['blogs' => $blog]);
+        return view('blog.detail', ['blog' => $blog]);
     }
 }
