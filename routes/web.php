@@ -35,5 +35,5 @@ Route::get('/blog/{id}',
 Route::get('/blog/edit/{id}', 
 [BlogController::class, 'showEdit'])->name('edit');
 
-Route::get('/blog/update', 
+Route::post('/blog/update', 
 [BlogController::class, 'exeUpdate'])->name('update');
