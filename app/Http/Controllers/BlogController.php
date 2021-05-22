@@ -31,4 +31,12 @@ class BlogController extends Controller
         }
         return view('blog.detail', ['blog' => $blog]);
     }
+
+    /**
+     * ブログ登録画面を表示する
+     * @return view
+     */
+    public function showCreate(){
+        return view('blog.form');
+    }
 }
