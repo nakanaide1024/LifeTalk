@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Http\Requests\BlogRequest;
 
 class BlogController extends Controller
 {
@@ -42,10 +43,10 @@ class BlogController extends Controller
 
     /**
      * ブログを登録する
-     * @param Request $request
+     * @param BlogRequest $request
      * @return view
      */
-    public function exeStore(Request $request){
+    public function exeStore(BlogRequest $request){
         //データを受け取る
         $inputs = $request->all();
         //ブログを登録
