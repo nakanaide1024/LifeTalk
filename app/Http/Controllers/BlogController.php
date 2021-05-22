@@ -63,4 +63,47 @@ class BlogController extends Controller
         $request->session()->flash('err_msg', 'ブログを登録しました');
         return redirect(route('blogs'));
     }
+
+     /**
+     * ブログ編集画面を表示する
+     * @param Request $request
+     * @param int $id
+     */
+    public function showEdit($id, Request $request)
+    {
+        $blog = Blog::find($id);
+
+        if(is_null($blog)){
+            $request->session()->flash('err_msg', 'データがありません');
+            return redirect(route('blogs'));
+        }
+        return view('blog.edit', ['blog' => $blog]);
+    }
+
+    /**
+     * ブログを更新する
+     * @param BlogRequest $request
+     * @return view
+     */
+    public function exeUpdate(BlogRequest $request){
+        //データを受け取る
+        $inputs = $request->all();
+
+        DB::beginTransaction();
+        try{
+        //ブログを登録
+        $blog = Blog::find($inputs['id']);
+        $blog->fill([
+            'title' => $inputs['title'],
+            'content' => $inputs['content']
+        ]);
+        $blog->save();
+        DB::commit();
+        } catch(\Throwable $e){
+            DB::rollBack();
+            abort(500);
+        }
+        $request->session()->flash('err_msg', 'ブログを更新しました');
+        return redirect(route('blogs'));
+    }
 }
